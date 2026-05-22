@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Result</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+        }
+
+        .container {
+            width: 70%;
+            margin: 50px auto;
+            background:white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f5f5f5;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #5b86e5;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin: 5px;
+        }
+
+        .score {
+            font-size: 25px;
+            font-weight: bold;
+            color: green;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #5b86e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Resume Analysis Result</h1>
+
+    <div class="box">
+        <h3> Category</h3>
+        <p><b>{{ category }}</b></p>
+    </div>
+
+    <div class="box">
+        <h3> Recommended Jobs</h3>
+        <ul>
+            {% for job in jobs %}
+                <li>{{ job }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="box">
+        <h3> Skills</h3>
+        {% if skills %}
+            {% for skill in skills %}
+                <span class="tag">{{ skill }}</span>
+            {% endfor %}
+        {% else %}
+            <p>No skills detected</p>
+        {% endif %}
+    </div>
+
+    <div class="box">
+        <h3> Resume Score</h3>
+        <p class="score">{{ score }}/100</p>
+    </div>
+
+    <div class="box">
+        <h3> Suggestions</h3>
+        <ul>
+            {% for s in suggestions %}
+                <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>
